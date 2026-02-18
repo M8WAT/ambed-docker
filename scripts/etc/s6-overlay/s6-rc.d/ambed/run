@@ -1,0 +1,13 @@
+#!/command/with-contenv sh
+
+# Find Container IP Address
+IP=$( hostname -I )
+
+# Start AMBEd listening on Container IP
+#exec echo -n "1-1.3:1.0" > /sys/bus/usb/drivers/ftdi_sio/unbind
+#exec echo -n "1-1.4:1.0" > /sys/bus/usb/drivers/ftdi_sio/unbind
+#exec echo -n "1-1.3:1.0" > /sys/bus/usb/drivers/usbfs/bind
+#exec echo -n "1-1.4:1.0" > /sys/bus/usb/drivers/usbfs/bind
+exec sudo rmmod ftdi_sio
+exec sudo rmmod usbserial
+exec sudo /ambed/ambed ${IP}
